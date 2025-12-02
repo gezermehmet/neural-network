@@ -1,4 +1,4 @@
-
+/* 
 class activisionFunction {
     public static double relu(double u) {
         return Math.max(0, u);
@@ -91,3 +91,4 @@ public class nn {
         System.out.println(activisionFunction.sigmoid(0.5f));
     }
 }
+*/
