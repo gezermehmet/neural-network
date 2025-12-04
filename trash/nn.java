@@ -1,3 +1,4 @@
+package trash;
 /* 
 class activisionFunction {
     public static double relu(double u) {

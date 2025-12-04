@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/*
 class Neuron{
+    public int neuronID;
+    public int neuronLayerNo;
     public double[] weights;
     public float[] inputs;
     public double bias;
@@ -22,9 +24,6 @@ class Neuron{
     public double netInput() {
         netInput = 0;
 
-        for (int i = 0; i < neuronList ; i++) {
-            weights[i] = randomWeight();    
-        }
         for (int i = 0; i < inputs.length; i++) {
             netInput += inputs[i] * weights[i];
         }
@@ -64,15 +63,14 @@ class Layer{
         for (int i = 0; i < layerSizes.size(); i++){
             for(int j = 0; j< layerSizes.get(i); j++){
                 Neuron neuron = new Neuron(layerSizes.get(i));
-                this.neuronList = neuronList.add(neuron);
+                neuronList.add(neuron);
             }
         }
         
+
+        }
     }
-
 }
-
-// en son layerlara nöron listesi ekleyip ağırlıkları ayarlamada kaldım.
 
 
 public class weird_nn {
@@ -85,4 +83,4 @@ public class weird_nn {
 
 
     }
-}
+}*/
