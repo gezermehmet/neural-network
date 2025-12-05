@@ -5,47 +5,33 @@ import java.util.List;
 public class Neuron {
 
     public double bias;
-    public double netInput;
     public double output;
     public String activationFunction;
-    List<Double> weights = new ArrayList<Double>();
-    List<Double> inputs = new ArrayList<Double>();
-    List<Double> firstInputs = new ArrayList<Double>(Arrays.asList(2.0, 33.5));
-    List<Double> nextInputs = new ArrayList<Double>();
+    public double[] weights;
+    public int previousNeuronNumber;
 
 
-    public int currentLayerIndex;
-
-
-
-
-    public Neuron() {
-
+    public Neuron(int previousNeuronNumber) {
+        this.previousNeuronNumber = previousNeuronNumber;
+        this.weights = new double[previousNeuronNumber];
+        this.weights = weights();
+        this.bias = randomBias();
     }
 
-
-    public void calculateWeights(int index) {
-
-        if (currentLayerIndex == 0) {
-            return;
-        } else {
-            for (int i = 0; i < index; i++) {
-                weights.add(randomWeight());
-//            System.out.println("Weight " + weights.get(i));
-//            System.out.println("Current Layer Index: " + currentLayerIndex);
-//            System.out.println("Current Layer Index - 1 : " + (currentLayerIndex - 1));
-            }
+    public double[] weights() {
+        for (int i = 0; i < weights.length; i++) {
+            weights[i] = randomWeight();
         }
+        return weights;
     }
 
+    public double feedForward(double[] inputs) {
+        double netInput = bias;
 
-    public double netInput() {
-        netInput = 0;
-        for (int i = 0; i < weights.size(); i++) {
-            netInput += weights.get(i) * inputs.get(i);
+        for (int i = 0; i < weights.length; i++) {
+            netInput += weights[i] * inputs[i];
         }
-        netInput += bias;
-        return  netInput;
+        return output(netInput);
     }
 
     public double output(double input) {

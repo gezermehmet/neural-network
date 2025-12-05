@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class Layer {
+/*public class Layer {
     List<Integer> neuronList = new ArrayList<>(Arrays.asList(2, 4, 3, 2));
     List<Neuron> neurons = new ArrayList<Neuron>();
     List<Double> outputs = new ArrayList<>();
@@ -73,7 +69,7 @@ public class Layer {
                 if (neuron.currentLayerIndex == i) {
                     int aq = neuron.currentLayerIndex - 1;
                     for (int k = 0; k < neuronList.get(j); k++) {
-                        outputs.add(neuron.inputs.get(j));
+                        outputs.add(neuron.output);
                     }
                     neuron.inputs.add(outputs.get(j));
                 }
@@ -92,5 +88,33 @@ public class Layer {
         }
         neuron.netInput += neuron.bias;
         return neuron.netInput;
+    }
+}
+*/
+
+public class Layer {
+
+    public Neuron[] neuronList;
+
+    public Layer(int neuronCount, int previousNeuronCount) {
+        createNeuron(neuronCount, previousNeuronCount);
+    }
+
+    public void createNeuron(int neuronCount, int previousNeuronCount) {
+        neuronList = new Neuron[neuronCount];
+        for (int i = 0; i < neuronCount; i++) {
+            Neuron n = new Neuron(previousNeuronCount);
+            neuronList[i] = n;
+        }
+    }
+
+    public double[] feedForward(double[] inputs) {
+        double[] outputList = new double[neuronList.length];
+
+        for (int i = 0; i < neuronList.length; i++) {
+            double temp = neuronList[i].feedForward(inputs);
+            outputList[i] = temp;
+        }
+        return outputList;
     }
 }
